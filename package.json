@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack",
-    "init:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore"
+    "start:server": "http-server"
   },
   "author": "",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
+    "http-server": "^0.11.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "style-loader": "^0.20.3",
