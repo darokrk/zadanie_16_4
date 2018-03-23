@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './Title.css';
 
-function Title(props) {
+const Title = props => {
     return (
         <div className={style.Title}>
             <h1>{props.title}</h1>

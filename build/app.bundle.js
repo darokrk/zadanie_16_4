@@ -8669,7 +8669,7 @@ var _Title2 = _interopRequireDefault(_Title);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Title(props) {
+var Title = function Title(props) {
     return _react2.default.createElement(
         'div',
         { className: _Title2.default.Title },
@@ -8685,7 +8685,7 @@ function Title(props) {
             ' task'
         )
     );
-}
+};
 
 exports.default = Title;
 
