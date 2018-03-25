@@ -68,6 +68,29 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(23);
+} else {
+  module.exports = __webpack_require__(24);
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 
 
 // shim for using process in browser
@@ -255,20 +278,45 @@ process.chdir = function (dir) {
 process.umask = function () {
     return 0;
 };
+;
 
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
 
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
+    __REACT_HOT_LOADER__.register(process, 'process', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(19);
-} else {
-  module.exports = __webpack_require__(20);
-}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+    __REACT_HOT_LOADER__.register(cachedSetTimeout, 'cachedSetTimeout', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(cachedClearTimeout, 'cachedClearTimeout', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(defaultSetTimout, 'defaultSetTimout', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(defaultClearTimeout, 'defaultClearTimeout', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(runTimeout, 'runTimeout', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(runClearTimeout, 'runClearTimeout', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(queue, 'queue', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(draining, 'draining', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(currentQueue, 'currentQueue', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(queueIndex, 'queueIndex', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(cleanUpNextTick, 'cleanUpNextTick', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(drainQueue, 'drainQueue', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(Item, 'Item', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+
+    __REACT_HOT_LOADER__.register(noop, 'noop', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/process/browser.js');
+}();
+
+;
 
 /***/ }),
 /* 2 */
@@ -311,258 +359,22 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(makeEmptyFunction, "makeEmptyFunction", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/emptyFunction.js");
+
+  __REACT_HOT_LOADER__.register(emptyFunction, "emptyFunction", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/emptyFunction.js");
+}();
+
+;
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-
-/* eslint-disable no-unused-vars */
-
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-var emptyObject = {};
-
-if (process.env.NODE_ENV !== 'production') {
-  Object.freeze(emptyObject);
-}
-
-module.exports = emptyObject;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var validateFormat = function validateFormat(format) {};
-
-if (process.env.NODE_ENV !== 'production') {
-  validateFormat = function validateFormat(format) {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  };
-}
-
-function invariant(condition, format, a, b, c, d, e, f) {
-  validateFormat(format);
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(format.replace(/%s/g, function () {
-        return args[argIndex++];
-      }));
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-}
-
-module.exports = invariant;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright (c) 2014-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- */
-
-
-
-var emptyFunction = __webpack_require__(2);
-
-/**
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-
-var warning = emptyFunction;
-
-if (process.env.NODE_ENV !== 'production') {
-  var printWarning = function printWarning(format) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-    if (typeof console !== 'undefined') {
-      console.error(message);
-    }
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  warning = function warning(condition, format) {
-    if (format === undefined) {
-      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-
-    if (format.indexOf('Failed Composite propType: ') === 0) {
-      return; // Ignore CompositeComponent proptype check.
-    }
-
-    if (!condition) {
-      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-        args[_key2 - 2] = arguments[_key2];
-      }
-
-      printWarning.apply(undefined, [format].concat(args));
-    }
-  };
-}
-
-module.exports = warning;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -642,9 +454,22 @@ function toComment(sourceMap) {
 
 	return '/*# ' + data + ' */';
 }
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(cssWithMappingToString, "cssWithMappingToString", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/css-loader/lib/css-base.js");
+
+	__REACT_HOT_LOADER__.register(toComment, "toComment", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/css-loader/lib/css-base.js");
+}();
+
+;
 
 /***/ }),
-/* 8 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -710,7 +535,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(37);
+var	fixUrls = __webpack_require__(41);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -1026,6 +851,311 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
+
+/* eslint-disable no-unused-vars */
+
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
+}
+
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc'); // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
+}
+
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
+
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
+
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
+
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
+
+	return to;
+};
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+
+	__REACT_HOT_LOADER__.register(getOwnPropertySymbols, 'getOwnPropertySymbols', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/object-assign/index.js');
+
+	__REACT_HOT_LOADER__.register(hasOwnProperty, 'hasOwnProperty', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/object-assign/index.js');
+
+	__REACT_HOT_LOADER__.register(propIsEnumerable, 'propIsEnumerable', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/object-assign/index.js');
+
+	__REACT_HOT_LOADER__.register(toObject, 'toObject', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/object-assign/index.js');
+
+	__REACT_HOT_LOADER__.register(shouldUseNative, 'shouldUseNative', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/object-assign/index.js');
+}();
+
+;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var emptyObject = {};
+
+if (process.env.NODE_ENV !== 'production') {
+  Object.freeze(emptyObject);
+}
+
+module.exports = emptyObject;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(emptyObject, 'emptyObject', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/emptyObject.js');
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var validateFormat = function validateFormat(format) {};
+
+if (process.env.NODE_ENV !== 'production') {
+  validateFormat = function validateFormat(format) {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  };
+}
+
+function invariant(condition, format, a, b, c, d, e, f) {
+  validateFormat(format);
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error('Minified exception occurred; use the non-minified dev environment ' + 'for the full error message and additional helpful warnings.');
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(format.replace(/%s/g, function () {
+        return args[argIndex++];
+      }));
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+}
+
+module.exports = invariant;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(validateFormat, 'validateFormat', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/invariant.js');
+
+  __REACT_HOT_LOADER__.register(invariant, 'invariant', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/invariant.js');
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ */
+
+
+
+var emptyFunction = __webpack_require__(2);
+
+/**
+ * Similar to invariant but only logs a warning if the condition is not met.
+ * This can be used to log issues in development environments in critical
+ * paths. Removing the logging code for production environments will keep the
+ * same logic and follow the same code paths.
+ */
+
+var warning = emptyFunction;
+
+if (process.env.NODE_ENV !== 'production') {
+  var printWarning = function printWarning(format) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    var argIndex = 0;
+    var message = 'Warning: ' + format.replace(/%s/g, function () {
+      return args[argIndex++];
+    });
+    if (typeof console !== 'undefined') {
+      console.error(message);
+    }
+    try {
+      // --- Welcome to debugging React ---
+      // This error was thrown as a convenience so that you can use this stack
+      // to find the callsite that caused this warning to fire.
+      throw new Error(message);
+    } catch (x) {}
+  };
+
+  warning = function warning(condition, format) {
+    if (format === undefined) {
+      throw new Error('`warning(condition, format, ...args)` requires a warning ' + 'message argument');
+    }
+
+    if (format.indexOf('Failed Composite propType: ') === 0) {
+      return; // Ignore CompositeComponent proptype check.
+    }
+
+    if (!condition) {
+      for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+        args[_key2 - 2] = arguments[_key2];
+      }
+
+      printWarning.apply(undefined, [format].concat(args));
+    }
+  };
+}
+
+module.exports = warning;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(warning, 'warning', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/warning.js');
+
+  __REACT_HOT_LOADER__.register(printWarning, 'printWarning', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/warning.js');
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1042,9 +1172,9 @@ function updateLink (link, options, obj) {
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 if (process.env.NODE_ENV !== 'production') {
-  var invariant = __webpack_require__(5);
-  var warning = __webpack_require__(6);
-  var ReactPropTypesSecret = __webpack_require__(21);
+  var invariant = __webpack_require__(7);
+  var warning = __webpack_require__(8);
+  var ReactPropTypesSecret = __webpack_require__(25);
   var loggedTypeFailures = {};
 }
 
@@ -1091,7 +1221,20 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
 }
 
 module.exports = checkPropTypes;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(loggedTypeFailures, 'loggedTypeFailures', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/prop-types/checkPropTypes.js');
+
+  __REACT_HOT_LOADER__.register(checkPropTypes, 'checkPropTypes', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/prop-types/checkPropTypes.js');
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 10 */
@@ -1131,6 +1274,19 @@ var ExecutionEnvironment = {
 };
 
 module.exports = ExecutionEnvironment;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(canUseDOM, 'canUseDOM', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/ExecutionEnvironment.js');
+
+  __REACT_HOT_LOADER__.register(ExecutionEnvironment, 'ExecutionEnvironment', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/ExecutionEnvironment.js');
+}();
+
+;
 
 /***/ }),
 /* 11 */
@@ -1211,7 +1367,18 @@ var EventListener = {
 };
 
 module.exports = EventListener;
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(EventListener, 'EventListener', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/EventListener.js');
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 12 */
@@ -1255,6 +1422,17 @@ function getActiveElement(doc) /*?DOMElement*/{
 }
 
 module.exports = getActiveElement;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(getActiveElement, 'getActiveElement', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/getActiveElement.js');
+}();
+
+;
 
 /***/ }),
 /* 13 */
@@ -1328,6 +1506,21 @@ function shallowEqual(objA, objB) {
 }
 
 module.exports = shallowEqual;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(hasOwnProperty, 'hasOwnProperty', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/shallowEqual.js');
+
+  __REACT_HOT_LOADER__.register(is, 'is', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/shallowEqual.js');
+
+  __REACT_HOT_LOADER__.register(shallowEqual, 'shallowEqual', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/shallowEqual.js');
+}();
+
+;
 
 /***/ }),
 /* 14 */
@@ -1345,7 +1538,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(24);
+var isTextNode = __webpack_require__(28);
 
 /*eslint-disable no-bitwise */
 
@@ -1371,6 +1564,17 @@ function containsNode(outerNode, innerNode) {
 }
 
 module.exports = containsNode;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(containsNode, 'containsNode', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/containsNode.js');
+}();
+
+;
 
 /***/ }),
 /* 15 */
@@ -1401,6 +1605,17 @@ function focusNode(node) {
 }
 
 module.exports = focusNode;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(focusNode, 'focusNode', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/focusNode.js');
+}();
+
+;
 
 /***/ }),
 /* 16 */
@@ -1440,6 +1655,21 @@ if (getRandomValues) {
     return rnds;
   };
 }
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(getRandomValues, 'getRandomValues', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/lib/rng-browser.js');
+
+  __REACT_HOT_LOADER__.register(rnds8, 'rnds8', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/lib/rng-browser.js');
+
+  __REACT_HOT_LOADER__.register(rnds, 'rnds', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/lib/rng-browser.js');
+}();
+
+;
 
 /***/ }),
 /* 17 */
@@ -1464,32 +1694,137 @@ function bytesToUuid(buf, offset) {
 }
 
 module.exports = bytesToUuid;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(byteToHex, 'byteToHex', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/lib/bytesToUuid.js');
+
+  __REACT_HOT_LOADER__.register(i, 'i', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/lib/bytesToUuid.js');
+
+  __REACT_HOT_LOADER__.register(bytesToUuid, 'bytesToUuid', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/lib/bytesToUuid.js');
+}();
+
+;
 
 /***/ }),
 /* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(19);
+module.exports = __webpack_require__(22);
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
-var _react = __webpack_require__(1);
+module.exports = __webpack_require__(20);
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* eslint-disable global-require */
+
+
+
+if (true) {
+  module.exports = __webpack_require__(21);
+} else {
+  module.exports = require('./patch.dev');
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* noop */
+
+
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(22);
+var _reactDom = __webpack_require__(26);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(31);
+var _App = __webpack_require__(35);
 
 var _App2 = _interopRequireDefault(_App);
+
+var _reactHotLoader = __webpack_require__(54);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
 
+if (false) {
+    module.hot.accept('./containers/App', function () {
+        var NextApp = require('./containers/App').default;
+        _reactDom2.default.render(_react2.default.createElement(
+            _reactHotLoader.AppContainer,
+            null,
+            _react2.default.createElement(NextApp, null)
+        ), document.getElementById('app'));
+    });
+}
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+}();
+
+;
+
 /***/ }),
-/* 19 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1506,8 +1841,8 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var m = __webpack_require__(3),
-    n = __webpack_require__(4),
+var m = __webpack_require__(5),
+    n = __webpack_require__(6),
     p = __webpack_require__(2),
     q = "function" === typeof Symbol && Symbol["for"],
     r = q ? Symbol["for"]("react.element") : 60103,
@@ -1616,9 +1951,84 @@ var U = { Children: { map: function map(a, b, e) {
   isValidElement: K, version: "16.2.0", __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { ReactCurrentOwner: G, assign: m } },
     V = Object.freeze({ default: U }),
     W = V && U || V;module.exports = W["default"] ? W["default"] : W;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(q, "q", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(r, "r", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(t, "t", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(u, "u", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(v, "v", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(w, "w", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(x, "x", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(y, "y", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(z, "z", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(A, "A", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(B, "B", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(C, "C", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(D, "D", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(E, "E", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(F, "F", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(G, "G", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(H, "H", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(I, "I", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(J, "J", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(K, "K", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(escape, "escape", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(L, "L", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(M, "M", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(N, "N", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(O, "O", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(P, "P", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Q, "Q", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(R, "R", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(S, "S", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(T, "T", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(U, "U", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(V, "V", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+
+  __REACT_HOT_LOADER__.register(W, "W", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react/cjs/react.production.min.js");
+}();
+
+;
 
 /***/ }),
-/* 20 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1639,10 +2049,10 @@ if (process.env.NODE_ENV !== "production") {
   (function () {
     'use strict';
 
-    var _assign = __webpack_require__(3);
-    var emptyObject = __webpack_require__(4);
-    var invariant = __webpack_require__(5);
-    var warning = __webpack_require__(6);
+    var _assign = __webpack_require__(5);
+    var emptyObject = __webpack_require__(6);
+    var invariant = __webpack_require__(7);
+    var warning = __webpack_require__(8);
     var emptyFunction = __webpack_require__(2);
     var checkPropTypes = __webpack_require__(9);
 
@@ -2975,10 +3385,19 @@ if (process.env.NODE_ENV !== "production") {
     module.exports = react;
   })();
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 21 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2994,9 +3413,20 @@ if (process.env.NODE_ENV !== "production") {
 var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(ReactPropTypesSecret, 'ReactPropTypesSecret', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/prop-types/lib/ReactPropTypesSecret.js');
+}();
+
+;
 
 /***/ }),
-/* 22 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3031,14 +3461,25 @@ if (process.env.NODE_ENV === 'production') {
   // DCE check should happen before ReactDOM bundle executes so that
   // DevTools can report bad minification during injection.
   checkDCE();
-  module.exports = __webpack_require__(23);
+  module.exports = __webpack_require__(27);
 } else {
-  module.exports = __webpack_require__(26);
+  module.exports = __webpack_require__(30);
 }
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(checkDCE, 'checkDCE', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/index.js');
+}();
+
+;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 23 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3058,16 +3499,16 @@ if (process.env.NODE_ENV === 'production') {
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var aa = __webpack_require__(1),
+var aa = __webpack_require__(0),
     l = __webpack_require__(10),
-    B = __webpack_require__(3),
+    B = __webpack_require__(5),
     C = __webpack_require__(2),
     ba = __webpack_require__(11),
     da = __webpack_require__(12),
     ea = __webpack_require__(13),
     fa = __webpack_require__(14),
     ia = __webpack_require__(15),
-    D = __webpack_require__(4);
+    D = __webpack_require__(6);
 function E(a) {
   for (var b = arguments.length - 1, c = "Minified React error #" + a + "; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d" + a, d = 0; d < b; d++) {
     c += "\x26args[]\x3d" + encodeURIComponent(arguments[d + 1]);
@@ -5033,9 +5474,660 @@ var Sg = { createPortal: Qg, findDOMNode: function findDOMNode(a) {
   }, unstable_createPortal: Qg, unstable_batchedUpdates: tc, unstable_deferredUpdates: Z.deferredUpdates, flushSync: Z.flushSync, __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED: { EventPluginHub: mb, EventPluginRegistry: Va, EventPropagators: Cb, ReactControlledComponent: qc, ReactDOMComponentTree: sb, ReactDOMEventListener: xd } };
 Z.injectIntoDevTools({ findFiberByHostInstance: pb, bundleType: 0, version: "16.2.0", rendererPackageName: "react-dom" });var Tg = Object.freeze({ default: Sg }),
     Ug = Tg && Sg || Tg;module.exports = Ug["default"] ? Ug["default"] : Ug;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(E, "E", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(oa, "oa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(pa, "pa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ta, "ta", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ua, "ua", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(va, "va", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(wa, "wa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(xa, "xa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ya, "ya", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(K, "K", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(za, "za", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Aa, "Aa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ba, "Ba", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ca, "Ca", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Da, "Da", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ea, "Ea", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(M, "M", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ga, "Ga", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ha, "Ha", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ia, "Ia", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(P, "P", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ja, "Ja", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ka, "Ka", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(La, "La", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ma, "Ma", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Na, "Na", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Qa, "Qa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Oa, "Oa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Pa, "Pa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ra, "Ra", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Sa, "Sa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ta, "Ta", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ua, "Ua", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Va, "Va", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Wa, "Wa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Xa, "Xa", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ya, "Ya", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Za, "Za", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register($a, "$a", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ab, "ab", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(bb, "bb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(cb, "cb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(db, "db", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(gb, "gb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(hb, "hb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ib, "ib", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(jb, "jb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(kb, "kb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(lb, "lb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(mb, "mb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(nb, "nb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Q, "Q", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ob, "ob", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(pb, "pb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(qb, "qb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(rb, "rb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(sb, "sb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(tb, "tb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ub, "ub", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(vb, "vb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(wb, "wb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(xb, "xb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(yb, "yb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(zb, "zb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ab, "Ab", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Bb, "Bb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Cb, "Cb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Db, "Db", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Eb, "Eb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(S, "S", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Fb, "Fb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Gb, "Gb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Hb, "Hb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ib, "Ib", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(T, "T", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Kb, "Kb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Lb, "Lb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Jb, "Jb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Mb, "Mb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Nb, "Nb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Pb, "Pb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Vb, "Vb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Wb, "Wb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Xb, "Xb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Yb, "Yb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Zb, "Zb", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register($b, "$b", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ac, "ac", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(bc, "bc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(cc, "cc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(dc, "dc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ec, "ec", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(fc, "fc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(gc, "gc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(hc, "hc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ic, "ic", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(jc, "jc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(kc, "kc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(lc, "lc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(mc, "mc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(nc, "nc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(oc, "oc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(pc, "pc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(qc, "qc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(rc, "rc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(sc, "sc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(tc, "tc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(uc, "uc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(vc, "vc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(wc, "wc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(xc, "xc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(yc, "yc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(zc, "zc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ac, "Ac", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Bc, "Bc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Cc, "Cc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Dc, "Dc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ec, "Ec", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Fc, "Fc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Gc, "Gc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Hc, "Hc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ic, "Ic", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Jc, "Jc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Kc, "Kc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Lc, "Lc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Mc, "Mc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Nc, "Nc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Oc, "Oc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Pc, "Pc", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register($c, "$c", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ad, "ad", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(bd, "bd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(cd, "cd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(dd, "dd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ed, "ed", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(fd, "fd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(gd, "gd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(hd, "hd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(id, "id", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(jd, "jd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(kd, "kd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ld, "ld", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(md, "md", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(nd, "nd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(od, "od", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(pd, "pd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(qd, "qd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(rd, "rd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(td, "td", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(sd, "sd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ud, "ud", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(U, "U", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(wd, "wd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(vd, "vd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(xd, "xd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(yd, "yd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(zd, "zd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ad, "Ad", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Bd, "Bd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Cd, "Cd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Dd, "Dd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ed, "Ed", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Fd, "Fd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Gd, "Gd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Hd, "Hd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Id, "Id", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Jd, "Jd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Kd, "Kd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ld, "Ld", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Md, "Md", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Nd, "Nd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Od, "Od", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Pd, "Pd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Qd, "Qd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Rd, "Rd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Sd, "Sd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Td, "Td", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ud, "Ud", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Vd, "Vd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Wd, "Wd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Xd, "Xd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Yd, "Yd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Zd, "Zd", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register($d, "$d", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ae, "ae", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(be, "be", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ce, "ce", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(de, "de", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ee, "ee", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(fe, "fe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ge, "ge", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(he, "he", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(V, "V", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(W, "W", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ie, "ie", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(X, "X", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(je, "je", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ke, "ke", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(me, "me", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(le, "le", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ne, "ne", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(oe, "oe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(pe, "pe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(qe, "qe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(re, "re", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Y, "Y", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(se, "se", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(te, "te", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ue, "ue", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ve, "ve", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(we, "we", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(xe, "xe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ye, "ye", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ze, "ze", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ae, "Ae", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Be, "Be", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ce, "Ce", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(De, "De", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ee, "Ee", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Fe, "Fe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ge, "Ge", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(He, "He", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ie, "Ie", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Je, "Je", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ke, "Ke", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Le, "Le", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Qe, "Qe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Re, "Re", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Se, "Se", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Te, "Te", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ue, "Ue", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ve, "Ve", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(We, "We", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Xe, "Xe", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ye, "Ye", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ze, "Ze", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register($e, "$e", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(af, "af", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(bf, "bf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(cf, "cf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(df, "df", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ef, "ef", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ff, "ff", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(gf, "gf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(hf, "hf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(jf, "jf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(kf, "kf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(lf, "lf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(mf, "mf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(nf, "nf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(of, "of", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(pf, "pf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(qf, "qf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(rf, "rf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(sf, "sf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(tf, "tf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(uf, "uf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(vf, "vf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(wf, "wf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(xf, "xf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(yf, "yf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(zf, "zf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Af, "Af", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Bf, "Bf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Cf, "Cf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Df, "Df", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ef, "Ef", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ff, "Ff", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Gf, "Gf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Hf, "Hf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(If, "If", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Kf, "Kf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Jf, "Jf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Lf, "Lf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Mf, "Mf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Nf, "Nf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Of, "Of", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Pf, "Pf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Qf, "Qf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Rf, "Rf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Sf, "Sf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Tf, "Tf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Uf, "Uf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Vf, "Vf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Wf, "Wf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Xf, "Xf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Yf, "Yf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Zf, "Zf", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register($f, "$f", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ag, "ag", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(bg, "bg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(cg, "cg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(dg, "dg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(eg, "eg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(fg, "fg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(gg, "gg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(hg, "hg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ig, "ig", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(jg, "jg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(kg, "kg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(lg, "lg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(mg, "mg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ng, "ng", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(og, "og", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(pg, "pg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(sg, "sg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(tg, "tg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(ug, "ug", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(vg, "vg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(wg, "wg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(xg, "xg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Mg, "Mg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ng, "Ng", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Og, "Og", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Z, "Z", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Pg, "Pg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Qg, "Qg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Rg, "Rg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Sg, "Sg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Tg, "Tg", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+
+  __REACT_HOT_LOADER__.register(Ug, "Ug", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-dom/cjs/react-dom.production.min.js");
+}();
+
+;
 
 /***/ }),
-/* 24 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5050,7 +6142,7 @@ Z.injectIntoDevTools({ findFiberByHostInstance: pb, bundleType: 0, version: "16.
  * @typechecks
  */
 
-var isNode = __webpack_require__(25);
+var isNode = __webpack_require__(29);
 
 /**
  * @param {*} object The object to check.
@@ -5061,9 +6153,20 @@ function isTextNode(object) {
 }
 
 module.exports = isTextNode;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(isTextNode, 'isTextNode', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/isTextNode.js');
+}();
+
+;
 
 /***/ }),
-/* 25 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5092,9 +6195,20 @@ function isNode(object) {
 }
 
 module.exports = isNode;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(isNode, 'isNode', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/isNode.js');
+}();
+
+;
 
 /***/ }),
-/* 26 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5105,7 +6219,7 @@ module.exports = isNode;
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
- */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(1);var invariant=__webpack_require__(5);var warning=__webpack_require__(6);var ExecutionEnvironment=__webpack_require__(10);var _assign=__webpack_require__(3);var emptyFunction=__webpack_require__(2);var EventListener=__webpack_require__(11);var getActiveElement=__webpack_require__(12);var shallowEqual=__webpack_require__(13);var containsNode=__webpack_require__(14);var focusNode=__webpack_require__(15);var emptyObject=__webpack_require__(4);var checkPropTypes=__webpack_require__(9);var hyphenateStyleName=__webpack_require__(27);var camelizeStyleName=__webpack_require__(29);/**
+ */var _typeof=typeof Symbol==="function"&&typeof Symbol.iterator==="symbol"?function(obj){return typeof obj;}:function(obj){return obj&&typeof Symbol==="function"&&obj.constructor===Symbol&&obj!==Symbol.prototype?"symbol":typeof obj;};if(process.env.NODE_ENV!=="production"){(function(){'use strict';var React=__webpack_require__(0);var invariant=__webpack_require__(7);var warning=__webpack_require__(8);var ExecutionEnvironment=__webpack_require__(10);var _assign=__webpack_require__(5);var emptyFunction=__webpack_require__(2);var EventListener=__webpack_require__(11);var getActiveElement=__webpack_require__(12);var shallowEqual=__webpack_require__(13);var containsNode=__webpack_require__(14);var focusNode=__webpack_require__(15);var emptyObject=__webpack_require__(6);var checkPropTypes=__webpack_require__(9);var hyphenateStyleName=__webpack_require__(31);var camelizeStyleName=__webpack_require__(33);/**
  * WARNING: DO NOT manually require this module.
  * This is a replacement for `invariant(...)` used by the error code system
  * and will _only_ be required by the corresponding babel pass.
@@ -8074,11 +9188,11 @@ EventPluginRegistry:EventPluginRegistry,EventPropagators:EventPropagators,ReactC
 if(navigator.userAgent.indexOf('Chrome')>-1&&navigator.userAgent.indexOf('Edge')===-1||navigator.userAgent.indexOf('Firefox')>-1){var protocol=window.location.protocol;// Don't warn in exotic cases like chrome-extension://.
 if(/^(https?|file):$/.test(protocol)){console.info('%cDownload the React DevTools '+'for a better development experience: '+'https://fb.me/react-devtools'+(protocol==='file:'?'\nYou might need to use a local HTTP server (instead of file://): '+'https://fb.me/react-devtools-faq':''),'font-weight:bold');}}}}var ReactDOM$2=Object.freeze({default:ReactDOM});var ReactDOM$3=ReactDOM$2&&ReactDOM||ReactDOM$2;// TODO: decide on the top-level export form.
 // This is hacky but makes it work with both Rollup and Jest.
-var reactDom=ReactDOM$3['default']?ReactDOM$3['default']:ReactDOM$3;module.exports=reactDom;})();}
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+var reactDom=ReactDOM$3['default']?ReactDOM$3['default']:ReactDOM$3;module.exports=reactDom;})();};var _temp=function(){if(typeof __REACT_HOT_LOADER__==='undefined'){return;}}();;
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 27 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8093,7 +9207,7 @@ var reactDom=ReactDOM$3['default']?ReactDOM$3['default']:ReactDOM$3;module.expor
 
 
 
-var hyphenate = __webpack_require__(28);
+var hyphenate = __webpack_require__(32);
 
 var msPattern = /^ms-/;
 
@@ -8118,9 +9232,22 @@ function hyphenateStyleName(string) {
 }
 
 module.exports = hyphenateStyleName;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(msPattern, 'msPattern', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/hyphenateStyleName.js');
+
+  __REACT_HOT_LOADER__.register(hyphenateStyleName, 'hyphenateStyleName', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/hyphenateStyleName.js');
+}();
+
+;
 
 /***/ }),
-/* 28 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8154,9 +9281,22 @@ function hyphenate(string) {
 }
 
 module.exports = hyphenate;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(_uppercasePattern, '_uppercasePattern', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/hyphenate.js');
+
+  __REACT_HOT_LOADER__.register(hyphenate, 'hyphenate', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/hyphenate.js');
+}();
+
+;
 
 /***/ }),
-/* 29 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8171,7 +9311,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(30);
+var camelize = __webpack_require__(34);
 
 var msPattern = /^-ms-/;
 
@@ -8197,9 +9337,22 @@ function camelizeStyleName(string) {
 }
 
 module.exports = camelizeStyleName;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(msPattern, 'msPattern', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/camelizeStyleName.js');
+
+  __REACT_HOT_LOADER__.register(camelizeStyleName, 'camelizeStyleName', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/camelizeStyleName.js');
+}();
+
+;
 
 /***/ }),
-/* 30 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8232,9 +9385,22 @@ function camelize(string) {
 }
 
 module.exports = camelize;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(_hyphenPattern, "_hyphenPattern", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/camelize.js");
+
+  __REACT_HOT_LOADER__.register(camelize, "camelize", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/fbjs/lib/camelize.js");
+}();
+
+;
 
 /***/ }),
-/* 31 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8246,25 +9412,29 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _uuid = __webpack_require__(32);
+var _uuid = __webpack_require__(36);
 
 var _uuid2 = _interopRequireDefault(_uuid);
 
-var _App = __webpack_require__(35);
+var _App = __webpack_require__(39);
 
 var _App2 = _interopRequireDefault(_App);
 
-var _Title = __webpack_require__(38);
+var _Title = __webpack_require__(42);
 
 var _Title2 = _interopRequireDefault(_Title);
 
-var _TodoList = __webpack_require__(41);
+var _TodoList = __webpack_require__(45);
 
 var _TodoList2 = _interopRequireDefault(_TodoList);
+
+var _TodoForm = __webpack_require__(51);
+
+var _TodoForm2 = _interopRequireDefault(_TodoForm);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8294,19 +9464,28 @@ var App = function (_React$Component) {
             }, {
                 id: 3,
                 text: 'feed my cat'
-            }]
+            }],
+            value: ""
         };
+        _this.addTodo = _this.addTodo.bind(_this);
         _this.removeTodo = _this.removeTodo.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
         return _this;
     }
 
     _createClass(App, [{
+        key: 'handleChange',
+        value: function handleChange(e) {
+            this.setState({ value: e.target.value });
+        }
+    }, {
         key: 'addTodo',
-        value: function addTodo(val) {
+        value: function addTodo(e) {
             var todo = {
-                text: val,
+                text: this.state.value,
                 id: _uuid2.default.v4()
             };
+            e.preventDefault();
             var data = [].concat(_toConsumableArray(this.state.data), [todo]);
             this.setState({ data: data });
         }
@@ -8325,6 +9504,7 @@ var App = function (_React$Component) {
                 'div',
                 { className: _App2.default.TodoApp },
                 _react2.default.createElement(_Title2.default, { title: 'To do list', taskLength: this.state.data.length }),
+                _react2.default.createElement(_TodoForm2.default, { add: this.addTodo, value: this.state.value, handleChange: this.handleChange }),
                 _react2.default.createElement(_TodoList2.default, { todos: this.state.data, remove: this.removeTodo })
             );
         }
@@ -8333,26 +9513,51 @@ var App = function (_React$Component) {
     return App;
 }(_react2.default.Component);
 
-exports.default = App;
+var _default = App;
+exports.default = _default;
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+
+    __REACT_HOT_LOADER__.register(App, 'App', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/containers/App.js');
+
+    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/containers/App.js');
+}();
+
+;
 
 /***/ }),
-/* 32 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var v1 = __webpack_require__(33);
-var v4 = __webpack_require__(34);
+var v1 = __webpack_require__(37);
+var v4 = __webpack_require__(38);
 
 var uuid = v4;
 uuid.v1 = v1;
 uuid.v4 = v4;
 
 module.exports = uuid;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(uuid, 'uuid', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/index.js');
+}();
+
+;
 
 /***/ }),
-/* 33 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8464,9 +9669,28 @@ function v1(options, buf, offset) {
 }
 
 module.exports = v1;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(_nodeId, '_nodeId', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/v1.js');
+
+  __REACT_HOT_LOADER__.register(_clockseq, '_clockseq', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/v1.js');
+
+  __REACT_HOT_LOADER__.register(_lastMSecs, '_lastMSecs', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/v1.js');
+
+  __REACT_HOT_LOADER__.register(_lastNSecs, '_lastNSecs', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/v1.js');
+
+  __REACT_HOT_LOADER__.register(v1, 'v1', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/v1.js');
+}();
+
+;
 
 /***/ }),
-/* 34 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8501,13 +9725,24 @@ function v4(options, buf, offset) {
 }
 
 module.exports = v4;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(v4, 'v4', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/uuid/v4.js');
+}();
+
+;
 
 /***/ }),
-/* 35 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(36);
+var content = __webpack_require__(40);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -8521,7 +9756,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(8)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -8553,10 +9788,10 @@ if(false) {
 }
 
 /***/ }),
-/* 36 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
@@ -8569,7 +9804,7 @@ exports.locals = {
 };
 
 /***/ }),
-/* 37 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8662,9 +9897,18 @@ module.exports = function (css) {
 	// send back the fixed css
 	return fixedCss;
 };
+;
+
+var _temp = function () {
+	if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+		return;
+	}
+}();
+
+;
 
 /***/ }),
-/* 38 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8674,11 +9918,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Title = __webpack_require__(39);
+var _Title = __webpack_require__(43);
 
 var _Title2 = _interopRequireDefault(_Title);
 
@@ -8697,19 +9941,33 @@ var Title = function Title(props) {
             'h2',
             null,
             props.taskLength,
-            ' task'
+            ' tasks'
         )
     );
 };
 
-exports.default = Title;
+var _default = Title;
+exports.default = _default;
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+
+    __REACT_HOT_LOADER__.register(Title, 'Title', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/Title/Title.js');
+
+    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/Title/Title.js');
+}();
+
+;
 
 /***/ }),
-/* 39 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(40);
+var content = __webpack_require__(44);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -8723,13 +9981,13 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(8)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {
-	module.hot.accept("!!../../node_modules/css-loader/index.js??ref--1-1!./Title.css", function() {
-		var newContent = require("!!../../node_modules/css-loader/index.js??ref--1-1!./Title.css");
+	module.hot.accept("!!../../../node_modules/css-loader/index.js??ref--1-1!./Title.css", function() {
+		var newContent = require("!!../../../node_modules/css-loader/index.js??ref--1-1!./Title.css");
 
 		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 
@@ -8755,23 +10013,23 @@ if(false) {
 }
 
 /***/ }),
-/* 40 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
 // module
-exports.push([module.i, ".DcXSjcjjaX9_NvqU207c- {\r\n    text-align: center;\r\n}", ""]);
+exports.push([module.i, "._1N8vWX7y1neR6HD1jTjwb5 {\r\n    text-align: center;\r\n}", ""]);
 
 // exports
 exports.locals = {
-	"Title": "DcXSjcjjaX9_NvqU207c-"
+	"Title": "_1N8vWX7y1neR6HD1jTjwb5"
 };
 
 /***/ }),
-/* 41 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8781,13 +10039,17 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _react = __webpack_require__(1);
+var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _TodoList = __webpack_require__(42);
+var _TodoList = __webpack_require__(46);
 
 var _TodoList2 = _interopRequireDefault(_TodoList);
+
+var _Todo = __webpack_require__(48);
+
+var _Todo2 = _interopRequireDefault(_Todo);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -8795,18 +10057,36 @@ var TodoList = function TodoList(props) {
     return _react2.default.createElement(
         'ul',
         { className: _TodoList2.default.TodoList },
-        props.todos
+        props.todos.map(function (todo) {
+            return _react2.default.createElement(_Todo2.default, { key: todo.id, text: todo.text, remove: function remove() {
+                    return props.remove(todo.id);
+                } });
+        })
     );
 };
 
-exports.default = TodoList;
+var _default = TodoList;
+exports.default = _default;
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+
+    __REACT_HOT_LOADER__.register(TodoList, 'TodoList', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/TodoList/TodoList.js');
+
+    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/TodoList/TodoList.js');
+}();
+
+;
 
 /***/ }),
-/* 42 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(43);
+var content = __webpack_require__(47);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -8820,13 +10100,13 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(8)(content, options);
+var update = __webpack_require__(4)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
 if(false) {
-	module.hot.accept("!!../../node_modules/css-loader/index.js??ref--1-1!./TodoList.css", function() {
-		var newContent = require("!!../../node_modules/css-loader/index.js??ref--1-1!./TodoList.css");
+	module.hot.accept("!!../../../node_modules/css-loader/index.js??ref--1-1!./TodoList.css", function() {
+		var newContent = require("!!../../../node_modules/css-loader/index.js??ref--1-1!./TodoList.css");
 
 		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 
@@ -8852,20 +10132,424 @@ if(false) {
 }
 
 /***/ }),
-/* 43 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(false);
+exports = module.exports = __webpack_require__(3)(false);
 // imports
 
 
 // module
-exports.push([module.i, "._746Le9XnRlHRT9rCtI51J {\r\n    color: white;\r\n}", ""]);
+exports.push([module.i, ".jk_p5NQmvEAzq86pJuDqs {\r\n    color:  darkblue;\r\n}", ""]);
 
 // exports
 exports.locals = {
-	"TodoList": "_746Le9XnRlHRT9rCtI51J"
+	"TodoList": "jk_p5NQmvEAzq86pJuDqs"
 };
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Todo = __webpack_require__(49);
+
+var _Todo2 = _interopRequireDefault(_Todo);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Todo = function Todo(props) {
+    return _react2.default.createElement(
+        'li',
+        null,
+        _react2.default.createElement(
+            'button',
+            { className: _Todo2.default.btn, onClick: function onClick() {
+                    return props.remove(props.id);
+                } },
+            'X'
+        ),
+        props.text
+    );
+};
+
+var _default = Todo;
+exports.default = _default;
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+
+    __REACT_HOT_LOADER__.register(Todo, 'Todo', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/Todo/Todo.js');
+
+    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/Todo/Todo.js');
+}();
+
+;
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(50);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {
+	module.hot.accept("!!../../../node_modules/css-loader/index.js??ref--1-1!./Todo.css", function() {
+		var newContent = require("!!../../../node_modules/css-loader/index.js??ref--1-1!./Todo.css");
+
+		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+
+		var locals = (function(a, b) {
+			var key, idx = 0;
+
+			for(key in a) {
+				if(!b || a[key] !== b[key]) return false;
+				idx++;
+			}
+
+			for(key in b) idx--;
+
+			return idx === 0;
+		}(content.locals, newContent.locals));
+
+		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
+
+		update(newContent);
+	});
+
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "._2cuZ3wjkms_b1nllDbXypw {\r\n    color: red;\r\n    margin: 5px;\r\n    border-radius: 50%;\r\n    border: none;\r\n    background-color: #fff;\r\n    cursor: pointer;\r\n    box-shadow: 1px 1px 1px grey;\r\n}", ""]);
+
+// exports
+exports.locals = {
+	"btn": "_2cuZ3wjkms_b1nllDbXypw"
+};
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TodoForm = __webpack_require__(52);
+
+var _TodoForm2 = _interopRequireDefault(_TodoForm);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var TodoForm = function TodoForm(props) {
+    return _react2.default.createElement(
+        'form',
+        { className: _TodoForm2.default.form, onSubmit: props.add },
+        _react2.default.createElement(
+            'fieldset',
+            { className: _TodoForm2.default.fieldset },
+            _react2.default.createElement(
+                'legend',
+                null,
+                'What are your plans for today?'
+            ),
+            _react2.default.createElement('input', {
+                type: 'text',
+                value: props.value,
+                onChange: props.handleChange,
+                placeholder: 'Enter what to do'
+            })
+        )
+    );
+};
+
+var _default = TodoForm;
+exports.default = _default;
+;
+
+var _temp = function () {
+    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+        return;
+    }
+
+    __REACT_HOT_LOADER__.register(TodoForm, 'TodoForm', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/TodoForm/TodoForm.js');
+
+    __REACT_HOT_LOADER__.register(_default, 'default', 'D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/src/components/TodoForm/TodoForm.js');
+}();
+
+;
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(53);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(4)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {
+	module.hot.accept("!!../../../node_modules/css-loader/index.js??ref--1-1!./TodoForm.css", function() {
+		var newContent = require("!!../../../node_modules/css-loader/index.js??ref--1-1!./TodoForm.css");
+
+		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+
+		var locals = (function(a, b) {
+			var key, idx = 0;
+
+			for(key in a) {
+				if(!b || a[key] !== b[key]) return false;
+				idx++;
+			}
+
+			for(key in b) idx--;
+
+			return idx === 0;
+		}(content.locals, newContent.locals));
+
+		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
+
+		update(newContent);
+	});
+
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 53 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "._25u-hFo1Fh7726vRcSRxae {\r\n    color: green;\r\n}\r\n._1As87HXNGsPTxOsvWDfZRj {\r\n    text-align: center;\r\n}", ""]);
+
+// exports
+exports.locals = {
+	"form": "_25u-hFo1Fh7726vRcSRxae",
+	"fieldset": "_1As87HXNGsPTxOsvWDfZRj"
+};
+
+/***/ }),
+/* 54 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = __webpack_require__(55);
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+
+/***/ }),
+/* 55 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var AppContainer = __webpack_require__(56);
+
+module.exports = function warnAboutIncorrectUsage(arg) {
+  if (this && this.callback) {
+    throw new Error('React Hot Loader: The Webpack loader is now exported separately. ' + 'If you use Babel, we recommend that you remove "react-hot-loader" ' + 'from the "loaders" section of your Webpack configuration altogether, ' + 'and instead add "react-hot-loader/babel" to the "plugins" section ' + 'of your .babelrc file. ' + 'If you prefer not to use Babel, replace "react-hot-loader" or ' + '"react-hot" with "react-hot-loader/webpack" in the "loaders" section ' + 'of your Webpack configuration.');
+  } else if (arg && arg.types && arg.types.IfStatement) {
+    throw new Error('React Hot Loader: The Babel plugin is exported separately. ' + 'Replace "react-hot-loader" with "react-hot-loader/babel" ' + 'in the "plugins" section of your .babelrc file. ' + 'While we recommend the above, if you prefer not to use Babel, ' + 'you may remove "react-hot-loader" from the "plugins" section of ' + 'your .babelrc file altogether, and instead add ' + '"react-hot-loader/webpack" to the "loaders" section of your Webpack ' + 'configuration.');
+  } else {
+    throw new Error('React Hot Loader does not have a default export. ' + 'If you use the import statement, make sure to include the ' + 'curly braces: import { AppContainer } from "react-hot-loader". ' + 'If you use CommonJS, make sure to read the named export: ' + 'require("react-hot-loader").AppContainer.');
+  }
+};
+
+module.exports.AppContainer = AppContainer;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+
+/***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* eslint-disable global-require */
+
+
+
+if (true) {
+  module.exports = __webpack_require__(57);
+} else {
+  module.exports = require('./AppContainer.dev');
+}
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+}();
+
+;
+
+/***/ }),
+/* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* eslint-disable react/prop-types */
+
+
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var React = __webpack_require__(0);
+var Component = React.Component;
+
+var AppContainer = function (_Component) {
+  _inherits(AppContainer, _Component);
+
+  function AppContainer() {
+    _classCallCheck(this, AppContainer);
+
+    return _possibleConstructorReturn(this, (AppContainer.__proto__ || Object.getPrototypeOf(AppContainer)).apply(this, arguments));
+  }
+
+  _createClass(AppContainer, [{
+    key: 'render',
+    value: function render() {
+      if (this.props.component) {
+        return React.createElement(this.props.component, this.props.props);
+      }
+
+      return React.Children.only(this.props.children);
+    }
+  }]);
+
+  return AppContainer;
+}(Component);
+
+module.exports = AppContainer;
+;
+
+var _temp = function () {
+  if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+    return;
+  }
+
+  __REACT_HOT_LOADER__.register(_createClass, "_createClass", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-hot-loader/lib/AppContainer.prod.js");
+
+  __REACT_HOT_LOADER__.register(_classCallCheck, "_classCallCheck", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-hot-loader/lib/AppContainer.prod.js");
+
+  __REACT_HOT_LOADER__.register(_possibleConstructorReturn, "_possibleConstructorReturn", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-hot-loader/lib/AppContainer.prod.js");
+
+  __REACT_HOT_LOADER__.register(_inherits, "_inherits", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-hot-loader/lib/AppContainer.prod.js");
+
+  __REACT_HOT_LOADER__.register(Component, "Component", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-hot-loader/lib/AppContainer.prod.js");
+
+  __REACT_HOT_LOADER__.register(AppContainer, "AppContainer", "D:/Projekty/Kodilla/Nauka-Webpack/zadanie_16_4/node_modules/react-hot-loader/lib/AppContainer.prod.js");
+}();
+
+;
 
 /***/ })
 /******/ ]);

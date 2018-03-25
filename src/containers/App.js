@@ -39,7 +39,7 @@ class App extends React.Component {
         };
         e.preventDefault();
         const data = [...this.state.data, todo];
-        this.setState({data});
+        this.setState({data, value: ""});
     }
     removeTodo(id) {
         const remainder = this.state.data.filter(todo => todo.id !== id);
@@ -49,7 +49,7 @@ class App extends React.Component {
         return (
             <div className={style.TodoApp}>
                 <Title title="To do list" taskLength={this.state.data.length} />
-                <TodoForm add={this.addTodo} value={this.state.value} handleChange={this.handleChange} />
+                <TodoForm add={this.addTodo} value={this.state.value} handleChange={this.handleChange} /> 
                 <TodoList todos={this.state.data} remove={this.removeTodo} />
             </div>
         );
